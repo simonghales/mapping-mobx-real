@@ -1,0 +1,11 @@
+@mixin typography____defaultFontFamily() {
+  font-family: $typography____defaultFontFamily;
+}
+
+@mixin typography____fontSizeSmallish() {
+  font-size: .9rem;
+}
+
+@mixin typography____fontSizeSmall() {
+  font-size: .8rem;
+}

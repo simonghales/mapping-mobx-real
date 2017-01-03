@@ -1,0 +1,19 @@
+
+@import "../settings/settings.colors";
+@import "../settings/settings.editor";
+
+.editor
+{
+}
+
+.editor__body
+{
+  display: flex;
+}
+
+.editor__column
+{
+  width:        $editor____defaultWidth;
+  padding:      20px;
+  border-right: 1px solid $color____lightShade;
+}

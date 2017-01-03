@@ -1,0 +1,52 @@
+@import "../settings/settings.margins";
+@import "../tools/tools.buttons";
+
+.editorColumn
+{
+}
+
+.editorColumn__cards
+{
+  margin-bottom: $margin____medium;
+
+  .editorColumn--noCards &
+  {
+    display: none;
+  }
+
+}
+
+.editorColumn__card
+{
+  margin-top: $margin____medium;
+
+  &:first-of-type
+  {
+    margin-top: 0;
+  }
+
+}
+
+.editorColumn__newCard
+{
+  margin-bottom: $margin____medium;
+
+  display:       none;
+
+  .editorColumn--addingNewCard &
+  {
+    display: block;
+  }
+
+}
+
+.editorColumn__addButton
+{
+  @include buttonCard;
+
+  .editorColumn--addingNewCard &
+  {
+    display: none;
+  }
+
+}

@@ -1,0 +1,153 @@
+@import "../settings/settings.colors";
+@import "./tools.typography";
+@import "./tools.transitions";
+
+@mixin focusBlueOutline
+{
+  &:focus
+  {
+    outline:        #008eff solid 2px;
+    outline-offset: -2px;
+  }
+}
+
+@mixin buttonReset
+{
+  background: none;
+  border:     0;
+  cursor:     pointer;
+  font-size:  inherit;
+  padding:    0;
+
+  &:focus
+  {
+    outline: none;
+  }
+
+}
+
+@mixin roundShadowButton
+{
+  @include buttonReset;
+  @include transition____softChange;
+  border-radius: 5px;
+  box-shadow:    inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight:   700;
+
+  &:active
+  {
+    transform: translateY(1px);
+  }
+}
+
+@mixin blueButton
+{
+  @include roundShadowButton;
+  color:            $color____darkBlue;
+  background-color: $color____blueShade;
+
+  &:hover
+  {
+    color: darken($color____darkBlue, 10);
+  }
+
+  &:active
+  {
+    background-color: darken($color____blueShade, 5);
+  }
+
+}
+
+@mixin purpleButton
+{
+  @include roundShadowButton;
+  color:            #695b9c;
+  background-color: #cdc5f7;
+
+  &:hover
+  {
+    color: darken(#695b9c, 10);
+  }
+
+  &:active
+  {
+    background-color: darken(#cdc5f7, 5);
+  }
+}
+
+@mixin buttonCard
+{
+  @include blueButton;
+  @include focusBlueOutline;
+  @include typography____fontSizeSmallish;
+  display:    block;
+  text-align: center;
+  width:      100%;
+  padding:    20px;
+}
+
+@mixin buttonAdd
+{
+  @include blueButton;
+  @include focusBlueOutline;
+  @include typography____fontSizeSmall;
+  padding: 7px 10px;
+}
+
+@mixin buttonCancel
+{
+  @include roundShadowButton;
+  @include focusBlueOutline;
+  @include typography____fontSizeSmall;
+  background-color: rgba(0, 0, 0, 0.05);
+  color:            rgba(0, 0, 0, 0.5);
+  padding:          7px 10px;
+
+  &:hover
+  {
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  &:active
+  {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+}
+
+@mixin buttonLink
+{
+  @include purpleButton;
+  @include typography____fontSizeSmall;
+  display: inline-block;
+  padding: 7px 10px;
+}
+
+@mixin buttonSmallAdd
+{
+  @include blueButton;
+  @include focusBlueOutline;
+  @include typography____fontSizeSmall;
+  padding: 7px 10px;
+}
+
+@mixin buttonSmallCancel
+{
+  @include roundShadowButton;
+  @include focusBlueOutline;
+  @include typography____fontSizeSmall;
+  background-color: rgba(0, 0, 0, 0.05);
+  color:            #999999;
+  padding:          7px 10px;
+
+  &:hover
+  {
+    color: #333333;
+  }
+
+  &:active
+  {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+}

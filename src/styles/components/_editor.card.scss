@@ -1,0 +1,28 @@
+@import "../settings/settings.colors";
+@import "../settings/settings.margins";
+@import "../tools/tools.card";
+@import "../tools/tools.typography";
+
+.editorCard {
+  @include card;
+  padding: $margin____smallMedium;
+
+  &:hover {
+    background-color: $color____faintestShade;
+  }
+
+}
+
+.editorCard__title {
+  font-weight: 700;
+}
+
+.editorCard__description {
+  margin-top: 5px;
+
+  .editorCard--noDescription &
+  {
+    display: none;
+  }
+
+}

@@ -1,0 +1,19 @@
+@import "../tools/tools.buttons";
+@import "../tools/tools.general";
+
+.mainHeader
+{
+  @include clearfix;
+  padding: 10px 0;
+}
+
+.mainHeader__nav
+{
+  float: right;
+}
+
+.mainHeader__nav__link
+{
+  @include buttonLink;
+  margin-right:      10px;
+}

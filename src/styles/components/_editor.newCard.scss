@@ -1,0 +1,61 @@
+@import "../settings/settings.colors";
+@import "../tools/tools.buttons";
+@import "../tools/tools.card";
+@import "../tools/tools.general";
+
+.editorNewCard
+{
+
+}
+
+.editorNewCard__card {
+  @include card;
+
+  > textarea
+  {
+    border-radius: 3px;
+    background:    none;
+    font-size:     .9rem;
+    display:       block;
+    width:         100%;
+    height:        80px;
+    padding:       15px;
+    border:        0;
+    resize:        none;
+    font-weight:   700;
+    text-align:    center;
+
+    @include placeholder {
+      color: #abb8bf;
+    }
+
+    &:focus
+    {
+      background-color: $color____faintestShade;
+      outline:          none;
+    }
+
+  }
+
+}
+
+.editorNewCard__options {
+  margin-top: 5px;
+}
+
+.editorNewCard__option {
+  margin-right: 5px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+}
+
+.editorNewCard__addButton {
+  @include buttonSmallAdd;
+}
+
+.editorNewCard__cancelButton {
+  @include buttonSmallCancel;
+}
