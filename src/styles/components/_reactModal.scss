@@ -1,0 +1,41 @@
+
+.reactModalOverlay
+{
+  @include fadeInAnimation;
+  transition:       opacity 300ms ease;
+  position:         fixed;
+  top:              0px;
+  left:             0px;
+  right:            0px;
+  bottom:           0px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &.reactModalOverlay--closing
+  {
+    opacity: 0;
+  }
+
+}
+
+.reactModalDefault
+{
+  transition:    transform 300ms ease;
+  position:      absolute;
+  top:           40px;
+  left:          40px;
+  right:         40px;
+  border:        1px solid rgba(0, 0, 0, 0.1);
+  background:    $color____reallyFaint;
+  overflow:      auto;
+  border-radius: 4px;
+  outline:       none;
+  padding:       20px;
+  max-width:     450px;
+  margin:        0px auto;
+
+  &.reactModalDefault--closing
+  {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+}

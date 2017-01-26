@@ -1,4 +1,4 @@
-import {observable, computed, useStrict} from 'mobx';
+import {action, observable, computed, useStrict} from 'mobx';
 import {Card} from './Card';
 
 useStrict(true);
@@ -11,5 +11,10 @@ export class Column {
         this.id = id;
         this.title = title;
         this.cards = cards;
+    }
+    setTitle(title: string) {
+        action(() => {
+            this.title = title;
+        })();
     }
 }

@@ -5,16 +5,17 @@
 
 .editorCard {
   @include card;
+  @include cardHoverShadow;
   padding: $margin____smallMedium;
 
   &:hover {
-    background-color: $color____faintestShade;
+    //background-color: $color____faintestShade;
   }
 
 }
 
 .editorCard__title {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .editorCard__description {

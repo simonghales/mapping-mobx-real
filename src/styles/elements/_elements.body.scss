@@ -6,7 +6,7 @@
 body
 {
   @include typography____defaultFontFamily;
-  background-color: #ebf0f5;
-  color:     $typography____defaultFontColor;
-  font-size: $typography____defaultFontSize;
+  background-color: $color____reallyFaint;
+  color:            $typography____defaultFontColor;
+  font-size:        $typography____defaultFontSize;
 }

@@ -3,9 +3,11 @@
 @import "./settings/settings.margins";
 @import "./settings/settings.typography";
 
+@import "./tools/tools.animations";
 @import "./tools/tools.buttons";
 @import "./tools/tools.card";
 @import "./tools/tools.general";
+@import "./tools/tools.shadows";
 @import "./tools/tools.typography";
 @import "./tools/tools.transitions";
 
@@ -14,9 +16,11 @@
 @import "./elements/elements.body";
 @import "./elements/elements.typography";
 
+@import "./components/editColumn";
 @import "./components/editor";
 @import "./components/editor.card";
 @import "./components/editor.column";
 @import "./components/editor.header";
 @import "./components/editor.newCard";
 @import "./components/mainHeader";
+@import "./components/reactModal";

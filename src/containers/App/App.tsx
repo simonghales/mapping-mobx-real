@@ -1,4 +1,7 @@
 import * as React from 'react';
+const DragDrop: any = require('react-dnd');
+const DragDropContext: any = DragDrop.DragDropContext;
+const HTML5Backend: any = require('react-dnd-html5-backend');
 import {Store} from '../../store';
 import {action} from 'mobx';
 import {observer} from 'mobx-react';
@@ -16,7 +19,7 @@ export interface IStore {
 }
 
 @observer
-export default class App extends React.Component<IStore, {}> {
+class App extends React.Component<IStore, {}> {
     constructor(props: any) {
         super(props);
         const {store} = props;
@@ -37,3 +40,5 @@ export default class App extends React.Component<IStore, {}> {
         );
     }
 }
+
+export default DragDropContext(HTML5Backend)(App);

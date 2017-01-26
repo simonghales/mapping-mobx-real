@@ -1,6 +1,7 @@
 import * as React from 'react';
 // const ReactModal = require('react-modal');
 // import * as Modal from 'react-modal';
+const ReactCSSTransitionGroup: any = require('react-addons-css-transition-group');
 const Modal:any = require('react-modal');
 import {action} from 'mobx';
 import {observer} from 'mobx-react';
@@ -10,6 +11,7 @@ import {Project as ProjectClass} from '../../classes/Project';
 import {addColumn} from '../../utils/data/column';
 import {modalStyles} from '../../utils/modals/modal';
 import EditColumn from '../EditColumn/EditColumn';
+import {DURATION_TRANSITION_DEFAULT} from '../../constants/durations';
 
 export interface IEditorHeader {
     columns: Array<ColumnClass>;
@@ -17,8 +19,11 @@ export interface IEditorHeader {
 }
 
 export interface IEditorHeaderState {
+    editingColumn?: boolean;
+    editingColumnModalIsClosing?: boolean;
     newColumnOpen?: boolean;
     newColumnTitle?: string;
+    selectedColumn?: ColumnClass;
 }
 
 export interface IEditorHeaderInputs {
@@ -33,12 +38,17 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
     constructor(props:IEditorHeader) {
         super(props);
         this.state = {
+            editingColumn: false,
+            editingColumnModalIsClosing: false,
             newColumnOpen: false,
-            newColumnTitle: ''
+            newColumnTitle: '',
+            selectedColumn: null,
         };
         this.addNewColumn = this.addNewColumn.bind(this);
         this.cancelNewColumn = this.cancelNewColumn.bind(this);
+        this.closeEditingColumnModal = this.closeEditingColumnModal.bind(this);
         this.createNewColumn = this.createNewColumn.bind(this);
+        this.editColumn = this.editColumn.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
     }
     addNewColumn() {
@@ -56,6 +66,18 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
             newColumnOpen: false
         });
     }
+    closeEditingColumnModal() {
+        this.setState({
+            editingColumn: false,
+            editingColumnModalIsClosing: true,
+            selectedColumn: null
+        });
+        setTimeout(() => {
+            this.setState({
+                editingColumnModalIsClosing: false
+            });
+        }, DURATION_TRANSITION_DEFAULT);
+    }
     createNewColumn() {
         const {project} = this.props;
         const {newColumnTitle} = this.state;
@@ -66,6 +88,12 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
         this.setState({
             newColumnOpen: false,
             newColumnTitle: ''
+        });
+    }
+    editColumn(column: ColumnClass) {
+        this.setState({
+            editingColumn: true,
+            selectedColumn: column
         });
     }
     handleTitleChange(event:any) {
@@ -84,7 +112,7 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
                 <div className='editorHeader__column' key={id}>
                     <span className='editorHeader__column__textWrapper'>
                         <span className='editorHeader__column__text'>{title}</span>
-                        <span className='editorHeader__column__editIcon'>E</span>
+                        <span className='editorHeader__column__editIcon' onClick={() => {this.editColumn(column)}}>E</span>
                     </span>
                 </div>
             );
@@ -95,14 +123,29 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
     render() {
         const {columns} = this.props;
         const {
+            editingColumn,
             newColumnOpen,
-            newColumnTitle
+            newColumnTitle,
+            selectedColumn,
         } = this.state;
+        const editingColumnModalIsClosing = this.state.editingColumnModalIsClosing;
         const headerClassNames = classNames([
             'editorHeader',
             {
                 'editorHeader--noColumns': !columns.length,
                 'editorHeader--addingNewColumn': newColumnOpen
+            }
+        ]);
+        const editingColumnModalClassNames = classNames([
+            'reactModalDefault',
+            {
+                'reactModalDefault--closing': editingColumnModalIsClosing
+            }
+        ]);
+        const editingColumnModalOverlayClassNames = classNames([
+            'reactModalOverlay',
+            {
+                'reactModalOverlay--closing': editingColumnModalIsClosing
             }
         ]);
         return (
@@ -131,8 +174,15 @@ export default class EditorHeader extends React.Component<IEditorHeader, IEditor
                         </button>
                     </span>
                 </div>
-                <Modal isOpen={true} style={modalStyles}>
-                    <EditColumn />
+                <Modal
+                    isOpen={editingColumn}
+                    contentLabel='Modal'
+                    style={modalStyles}
+                    onRequestClose={this.closeEditingColumnModal}
+                    closeTimeoutMS={DURATION_TRANSITION_DEFAULT}
+                    className={editingColumnModalClassNames}
+                    overlayClassName={editingColumnModalOverlayClassNames}>
+                    <EditColumn selectedColumn={selectedColumn} closeModal={this.closeEditingColumnModal} />
                 </Modal>
             </header>
         );

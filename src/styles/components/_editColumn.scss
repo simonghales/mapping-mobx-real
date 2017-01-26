@@ -1,0 +1,35 @@
+.editColumn
+{
+
+}
+
+.editColumn__titleWrapper
+{
+
+}
+
+.editColumn__title
+{
+  @include textInputDropshadow;
+  border:        0;
+  font-size:     1rem;
+  width:         100%;
+  padding:       10px;
+  border-radius: 3px;
+
+  &:focus
+  {
+    outline: none;
+  }
+
+}
+
+.editColumn__options
+{
+  margin-top: 10px;
+}
+
+.editColumn__save
+{
+  @include buttonAdd;
+}
