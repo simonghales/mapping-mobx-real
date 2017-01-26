@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 const classNames:any = require('classnames');
 import {Card as CardClass} from '../../classes/Card';
 import {Column as ColumnClass} from '../../classes/Column';
+import DraggableEditorCard from '../DraggableEditorCard/DraggableEditorCard';
 import EditorCard from '../EditorCard/EditorCard';
 import EditorNewCard from '../EditorNewCard/EditorNewCard';
 import {addCard} from '../../utils/data/card';
@@ -64,7 +65,9 @@ export default class EditorColumn extends React.Component<IEditorColumn, IEditor
             const card = cards[i];
             renderedCards.push(
                 <div className='editorColumn__card' key={card.id}>
-                    <EditorCard card={card} />
+                    <DraggableEditorCard>
+                        <EditorCard card={card} />
+                    </DraggableEditorCard>
                 </div>
             );
         }

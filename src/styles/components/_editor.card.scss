@@ -12,6 +12,16 @@
     //background-color: $color____faintestShade;
   }
 
+  .draggableEditorCard--isDragging &
+  {
+    opacity: 0.25;
+  }
+
+  .dropTargetEditorCard--isOver &
+  {
+    background-color: red;
+  }
+
 }
 
 .editorCard__title {
