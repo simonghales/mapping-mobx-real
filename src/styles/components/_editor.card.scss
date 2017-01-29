@@ -19,7 +19,18 @@
 
   .dropTargetEditorCard--isOver &
   {
-    background-color: red;
+    //background-color: red;
+  }
+
+  .editorColumn__card--displaced &,
+  .dropTargetEditorCard--topButtonHovered &
+  {
+    transform: translateY(15px);
+  }
+
+  .dropTargetEditorCard--bottomButtonHovered &
+  {
+    transform: translateY(-15px);
   }
 
 }

@@ -1,0 +1,64 @@
+.dropTargetEditorCard
+{
+  position: relative;
+}
+
+.dropTargetEditorCardButton
+{
+  display: none;
+  transition: transform 250ms ease;
+  position:   absolute;
+  left:       0;
+  right:      0;
+  z-index:    100;
+  text-align: center;
+
+  .editor--dragging &
+  {
+    @include popInFromNoneAnimation;
+    display: block;
+  }
+
+  &.dropTargetEditorCardButton--isOver
+  {
+    transform: scale(1.1);
+  }
+
+  &.dropTargetEditorCardButton--top
+  {
+    //visibility: hidden;
+    top:     -17px;
+
+    .editorColumn__card:first-of-type &
+    {
+      visibility: visible;
+    }
+
+    .editorColumn__topDropzone &
+    {
+
+    }
+
+  }
+
+  &.dropTargetEditorCardButton--bottom
+  {
+    bottom: -17px;
+  }
+
+}
+
+.dropTargetEditorCardButton__text
+{
+  background-color: #87bdfb;
+  color:            #ffffff;
+  padding:          5px 15px;
+  border-radius:    5px;
+  font-size:        13px;
+
+  .dropTargetEditorCardButton--isOver &
+  {
+    background-color: #308ffb;
+  }
+
+}

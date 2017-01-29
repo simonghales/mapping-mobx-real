@@ -21,10 +21,11 @@
   width:       $editor____defaultWidth;
   padding:     $margin____medium;
   text-align:  center;
+  flex:        none;
 
   &:hover
   {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
 }
@@ -71,6 +72,7 @@
   display:     flex;
   align-items: center;
   margin-left: $margin____medium;
+  flex:        none;
 }
 
 .editorHeader__addNewWrapper__button
@@ -131,7 +133,7 @@
 
   &:focus
   {
-    outline:    none;
+    outline: none;
   }
 
 }
